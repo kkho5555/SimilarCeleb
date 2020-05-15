@@ -1,5 +1,5 @@
-/model
-/numpy_data
-/tfjs_artifacts
-/train
-/validation
+/backend/model
+/backend/numpy_data
+/backend/tfjs_artifacts
+/backend/train
+/backend/validation
