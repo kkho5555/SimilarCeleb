@@ -5,7 +5,7 @@ Kakao.Link.createDefaultButton({
   content: {
     title: document.title,
     description: '내용, 주로 해시태그',
-    imageUrl: document.images[0].src,
+    imageUrl: document.images[1].src,
     link: {
       webUrl: document.location.href,
       mobileWebUrl: document.location.href,
