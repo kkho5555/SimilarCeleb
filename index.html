@@ -2,26 +2,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:url" content="https://similarceleb.netlify.app/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="닮은꼴 연예인 찾기" />
+    <meta
+      property="og:description"
+      content="3초만에 닮은 연예인을 찾아보세요"
+    />
+    <meta property="og:image" content="index_main.png" />
+
     <title>닮은꼴 연예인 찾기</title>
     <link rel="stylesheet" href="css/index.css" />
+    <script
+      src="https://kit.fontawesome.com/a120f86e25.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
-  <body class="index__body">
-    <header class="index__header">
-      <div class="header__column">
+  <body>
+    <header class="header">
+      <div class="header__title">
         <a href="index.html" class="gohome">닮은꼴 연예인 찾기</a>
       </div>
-      <div class="header__column">
-        <a id="kakao-link-btn" href="javascript:;">
-          <img
-            src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"
-          />
-        </a>
+      <div class="header__share-list">
+        <span>
+          <a id="kakao-link-btn" href="javascript:;">
+            <img
+              src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"
+            />
+          </a>
+        </span>
+        <span>
+          <a href="javascript:fb_share();">
+            <i class="fab fa-facebook-square fa-3x"></i>
+          </a>
+        </span>
+        <span>
+          <a href="javascript:tw_share();">
+            <i class="fab fa-twitter-square fa-3x"></i>
+          </a>
+        </span>
       </div>
     </header>
-    <main class="index__main">
-      <img src="gg.jpg" alt="" />
-    </main>
-    <script src="js/kakao.js"></script>
+    <main class="index__main"></main>
+    <script src="js/api/kakao.js"></script>
+    <script src="js/share.js"></script>
     <script src="js/index.js"></script>
   </body>
 </html>
