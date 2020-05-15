@@ -1,14 +1,38 @@
 Kakao.init('f3b1e7ad3119c871d4c13360f05459e2');
-function sendLinkKakao() {
-  Kakao.Link.sendDefault({
-    objectType: 'text',
-    text:
-      '기본 템플릿으로 제공되는 텍스트 템플릿은 텍스트를 최대 200자까지 표시할 수 있습니다. 텍스트 템플릿은 텍스트 영역과 하나의 기본 버튼을 가집니다. 임의의 버튼을 설정할 수도 있습니다. 여러 장의 이미지, 프로필 정보 등 보다 확장된 형태의 카카오링크는 다른 템플릿을 이용해 보낼 수 있습니다.',
+Kakao.Link.createDefaultButton({
+  container: '#kakao-link-btn', // 컨테이너는 아까 위에 버튼이 쓰여진 부분 id
+  objectType: 'feed',
+  content: {
+    // 여기부터 실제 내용이 들어갑니다.
+    title: '딸기 치즈 케익', // 본문 제목
+    description: '#케익 #딸기 #삼평동 #카페 #분위기 #소개팅', // 본문 바로 아래 들어가는 영역?
+    imageUrl:
+      'http://mud-kage.kakao.co.kr/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png', // 이미지
     link: {
-      mobileWebUrl:
-        'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
-      webUrl:
-        'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
+      mobileWebUrl: 'https://developers.kakao.com',
+      webUrl: 'https://developers.kakao.com',
     },
-  });
-}
+  },
+  social: {
+    /* 공유하면 소셜 정보도 같이 줄 수 있는데, 이 부분은 기반 서비스마다 적용이 쉬울수도 어려울 수도 있을듯 합니다. 전 연구해보고 안되면 제거할 예정 (망할 google  blogger...) */
+    likeCount: 286,
+    commentCount: 45,
+    sharedCount: 845,
+  },
+  buttons: [
+    {
+      title: '웹으로 보기',
+      link: {
+        mobileWebUrl: 'https://developers.kakao.com',
+        webUrl: 'https://developers.kakao.com',
+      },
+    },
+    {
+      title: '앱으로 보기',
+      link: {
+        mobileWebUrl: 'https://developers.kakao.com',
+        webUrl: 'https://developers.kakao.com',
+      },
+    },
+  ],
+});
