@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,14 +12,21 @@
     <meta property="og:image" content="index_main.png" />
 
     <title>닮은꼴 연예인 찾기</title>
-    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/process.css" />
     <script
       src="https://kit.fontawesome.com/a120f86e25.js"
       crossorigin="anonymous"
     ></script>
+    <script
+      class="jsbin"
+      src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"
+    ></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script> -->
+    <script src="https://docs.opencv.org/master/utils.js"></script>
   </head>
   <body>
     <div class="container">
+      <p class="err" id="errorMessage"></p>
       <header class="header">
         <div class="header__title">
           <a href="index.html" class="gohome">Find Famous</a>
@@ -42,18 +49,37 @@
           </span>
         </div>
       </header>
-      <main class="index__main"></main>
+      <main class="main">
+        <p class="err" id="errorMessage"></p>
+        <div class="file-upload">
+          <div class="image-upload-wrap">
+            <input
+              class="file-upload-input"
+              type="file"
+              onchange="readURL(this);"
+              accept="image/*"
+            />
+            <div class="drag-text">
+              <h3>마우스로 사진을 끌어보세요.</h3>
+            </div>
+          </div>
+          <div class="file-upload-content">
+            <canvas
+              id="canvasInput"
+              class="file-upload-image"
+              alt="your image"
+            ></canvas>
+          </div>
+        </div>
+        <canvas id="canvasOutput"></canvas>
+      </main>
     </div>
     <script src="js/api/kakao.js"></script>
     <script src="js/share.js"></script>
     <script src="js/index.js"></script>
 
-    <!-- load model -->
-    <h1>안녕하세요??????????</h1>
-    <img id="_img" src="gg.png" alt="" />
-    <div id="_div" class="result"></div>
-    <div id="label-container"></div>
-    <script src="process.js" type="module"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
+    <!-- <script async onload="opencvIsReady()" src="./js/opencv.js"></script> -->
+
+    <script src="./js/process.js"></script>
   </body>
 </html>

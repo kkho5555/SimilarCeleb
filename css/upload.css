@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+.file-upload {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+}
+.file-upload-content {
+  display: none;
+  text-align: center;
+}
+
+.file-upload-input {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 80%;
+  height: 100%;
+  outline: none;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.image-upload-wrap {
+  background-color: white;
+  opacity: 0.8;
+  margin-top: 20px;
+  border: 2px solid hsl(224, 64%, 58%);
+  position: relative;
+  height: 300px;
+}
+
+.image-dropping,
+.image-upload-wrap:hover {
+  background-color: hsl(224, 64%, 58%);
+  border: 2px dashed #ffffff;
+  opacity: 0.5;
+}
+
+.image-title-wrap {
+  padding: 0 15px 15px 15px;
+  color: #222;
+}
+
+.drag-text {
+  text-align: center;
+}
+
+.drag-text h3 {
+  font-weight: 400;
+  text-transform: uppercase;
+  color: hsl(224, 64%, 58%);
+  padding: 60px 0;
+}
+
+.file-upload-image {
+  max-height: 200px;
+  max-width: 200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.remove-image {
+  width: 200px;
+  margin: 0;
+  color: #fff;
+  background: hsl(224, 64%, 58%);
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  outline: none;
+  text-transform: uppercase;
+}
+
+.remove-image:hover {
+  background: #c13b2a;
+  color: #ffffff;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.remove-image:active {
+  border: 0;
+  transition: all 0.2s ease;
+}
