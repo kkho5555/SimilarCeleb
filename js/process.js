@@ -1,8 +1,3 @@
-// //# import * as tf from '@tensorflow/tfjs';
-function opencvIsReady() {
-  console.log('ready');
-}
-
 function readURL(input) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();
@@ -10,7 +5,6 @@ function readURL(input) {
     reader.onload = function (e) {
       $('.image-upload-wrap').hide();
       $('.file-upload-content').show();
-
       $('.image-title').html(input.files[0].name);
       let utils = new Utils('errorMessage');
       utils.loadImageToCanvas(e.target.result, 'canvasInput');
@@ -35,13 +29,23 @@ function faceDetect() {
   cv.cvtColor(src, gray, cv.COLOR_RGBA2GRAY, 0);
   let faces = new cv.RectVector();
   let faceCascade = new cv.CascadeClassifier();
-  // load pre-trained classifiers
-  console.log(faceCascade.load('haarcascade_frontalface_alt.xml'));
-
-  // detect faces
   let msize = new cv.Size(0, 0);
-  faceCascade.detectMultiScale(gray, faces, 1.1, 3, 0, msize, msize);
   let dsize = new cv.Size(64, 64);
+  // load pre-trained classifiers
+  faceCascade.load('haarcascade_frontalface_alt.xml');
+  let startTime, endTime;
+
+  //Get the start time
+  startTime = performance.now();
+
+  //Call the time-consuming function
+
+  faceCascade.detectMultiScale(gray, faces, 1.1, 3, 0, msize, msize);
+
+  //Get the end time
+  endTime = performance.now();
+  document.body.innerHTML = endTime - startTime;
+  // detect faces
   // You can try more different parameters
 
   src = gray.roi(faces.get(0));
