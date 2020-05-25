@@ -127,8 +127,12 @@ function faceDetect() {
 
   // detect faces
   // You can try more different parameters
-
-  src = gray.roi(faces.get(0));
+  try {
+    src = gray.roi(faces.get(0));
+  } catch (error) {
+    alert('얼굴인식 실패;;;;');
+    location.reload();
+  }
   cv.resize(src, src, dsize, 0, 0, cv.INTER_AREA);
   // cv.crop(src, point1, point2, [255, 0, 0, 255]);
   // }
