@@ -2,7 +2,9 @@ const IMAGE_CLASSES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 const IMAGE_SIZE = 64;
 TOPK_PREDICTIONS = 12;
 const predictionsElement = document.getElementById('predictions');
+let loader__message = document.querySelector('#loader__message');
 async function predict() {
+  loader__message.innerHTML = '데이터베이스에서 닮은 얼굴을 찾습니다';
   const model = await tf.loadLayersModel('js/model/model.json');
   const imgElement = document.querySelector('#canvasOutput');
   const logits = tf.tidy(() => {
@@ -86,6 +88,7 @@ function showResults(imgElement, classes) {
 }
 
 function readURL(input) {
+  loader__message.innerHTML = '사진을 찾았습니다! 얼굴을 인식합니다.';
   if (input.files && input.files[0]) {
     var reader = new FileReader();
 
@@ -111,6 +114,7 @@ function readURL(input) {
   }
 }
 function faceDetect() {
+  loader__message.innerHTML = '얼굴 인식중.....';
   let src = cv.imread('canvasInput');
   let gray = new cv.Mat();
   let resultImg = new cv.Mat();
@@ -146,7 +150,7 @@ function faceDetect() {
 }
 function loading() {
   const loader = document.querySelector('#loader-wrapper');
-  loader.style.display = 'block';
+  loader.style.display = 'flex';
 }
 function load_finish() {
   const loader = document.querySelector('#loader-wrapper');

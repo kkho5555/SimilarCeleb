@@ -70,11 +70,15 @@ a:visited {
   color: black;
   font-size: 35px;
 }
+.main {
+  font-family: 'Jua', sans-serif;
+}
 #can {
   width: 100%;
   background-color: #fff;
 }
 #loader-wrapper {
+  font-family: 'Jua', sans-serif;
   position: fixed;
   top: 0;
   left: 0;
@@ -83,8 +87,14 @@ a:visited {
   z-index: 10;
   overflow: hidden;
   display: none;
+  flex-direction: column;
 }
-
+#loader__message {
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  top: 55%;
+}
 #loader {
   display: block;
   position: relative;
