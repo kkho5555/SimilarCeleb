@@ -21,10 +21,18 @@
       class="jsbin"
       src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"
     ></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script> -->
     <script src="https://docs.opencv.org/master/utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
   </head>
   <body>
+    <!-- Loading -->
+    <div id="loader-wrapper">
+      <div id="loader"></div>
+
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+    </div>
+    <!-- Main -->
     <div class="container">
       <p class="err" id="errorMessage"></p>
       <header class="header">
@@ -60,7 +68,7 @@
               accept="image/*"
             />
             <div class="drag-text">
-              <h3>마우스로 사진을 끌어보세요.</h3>
+              <h3>사진을 올려보세요.</h3>
             </div>
           </div>
           <div class="file-upload-content">
@@ -71,12 +79,14 @@
             ></canvas>
           </div>
         </div>
-        <canvas id="canvasOutput"></canvas>
+        <canvas id="canvasOutput" style="display: none;"></canvas>
+        <div id="predictions"></div>
       </main>
     </div>
     <script src="js/api/kakao.js"></script>
     <script src="js/share.js"></script>
     <script src="js/index.js"></script>
+    <!-- <script src="js/model.js"></script> -->
 
     <!-- <script async onload="opencvIsReady()" src="./js/opencv.js"></script> -->
 
