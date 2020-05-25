@@ -24,7 +24,7 @@ async function predict() {
   const classes = await getTopKClasses(logits, TOPK_PREDICTIONS);
 
   // Show the classes in the DOM.
-  showResults(imgElement, classes);
+  showResults(classes);
 }
 async function getTopKClasses(logits, topK) {
   const values = await logits.data();
@@ -53,33 +53,71 @@ async function getTopKClasses(logits, topK) {
   return topClassesAndProbs;
 }
 
-function showResults(imgElement, classes) {
-  const predictionContainer = document.createElement('div');
-  predictionContainer.className = 'pred-container';
+function showResults(classes) {
+  console.log(classes);
+  let probs = {};
+  const colors = [
+    'progressred',
+    'progressblue',
+    'progresspurple',
+    'progressorange',
+    'progressgreen',
+  ];
 
-  const imgContainer = document.createElement('div');
-  imgContainer.appendChild(imgElement);
-  predictionContainer.appendChild(imgContainer);
+  const predictionContainer = document.createElement('ul');
+  predictionContainer.className = 'skills-bar-container';
 
-  const probsContainer = document.createElement('div');
   for (let i = 0; i < 5; i++) {
-    const row = document.createElement('div');
+    const celeb = classes[i].className;
+    const prob = (classes[i].probability * 100).toFixed(2) + '%';
+
+    const row = document.createElement('li');
     row.className = 'row';
 
     const classElement = document.createElement('div');
-    classElement.className = 'cell';
-    classElement.innerText = '이름' + classes[i].className;
+    classElement.className = 'progressbar-title';
+
+    const classTitle = document.createElement('h3');
+    classTitle.innerText = '이름' + celeb;
+
+    classElement.appendChild(classTitle);
+
+    const probsElement = document.createElement('span');
+    probsElement.id = celeb + '-percent';
+    probsElement.className = 'percent';
+
+    classElement.appendChild(probsElement);
     row.appendChild(classElement);
+    const barContainer = document.createElement('div');
+    barContainer.className = 'bar-container';
+    const progressbar = document.createElement('progress');
+    progressbar.id = 'progress-' + celeb;
+    progressbar.className = 'progressbar ' + colors[i];
+    progressbar.value = 0;
+    progressbar.max = '100';
+    console.log(prob);
 
-    const probsElement = document.createElement('div');
-    probsElement.className = 'cell';
-    probsElement.innerText =
-      '확률' + (classes[i].probability * 100).toFixed(2) + '%';
-    row.appendChild(probsElement);
+    barContainer.appendChild(progressbar);
+    row.appendChild(barContainer);
 
-    probsContainer.appendChild(row);
+    predictionContainer.appendChild(row);
+
+    probs[celeb] = prob;
   }
-  predictionContainer.appendChild(probsContainer);
+  var multiply = 4;
+  for (let [celeb, percent] of Object.entries(probs)) {
+    var delay = 700;
+
+    setTimeout(function () {
+      document.getElementById(celeb + '-percent').innerHTML = percent;
+      document.getElementById('progress-' + celeb).value = percent.replace(
+        '%',
+        ''
+      );
+    }, delay * multiply);
+
+    multiply++;
+  }
 
   predictionsElement.insertBefore(
     predictionContainer,

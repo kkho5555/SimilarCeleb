@@ -221,3 +221,226 @@ a:visited {
   -webkit-transition: all 0.3s 1s ease-out;
   transition: all 0.3s 1s ease-out;
 }
+.skills-bar-container {
+  position: relative;
+  width: 40%;
+  min-width: 300px;
+  list-style: none;
+  margin: 50px auto;
+}
+.skills-bar-container li {
+  position: relative;
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+.skills-bar-container li .progressbar-title {
+  color: black;
+  opacity: 0.7;
+}
+.skills-bar-container li .progressbar-title h3 {
+  display: inline-block;
+}
+.skills-bar-container li .progressbar-title .percent {
+  position: absolute;
+  right: 5px;
+}
+.skills-bar-container li .bar-container {
+  background: #555;
+  position: relative;
+  width: 100%;
+  height: 5px;
+  margin-top: 5px;
+  display: block;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+}
+.skills-bar-container li .bar-container .progressbar {
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.skills-bar-container li:nth-of-type(1) .bar-container .progressbar {
+  -webkit-animation-name: progress-1;
+  animation-name: progress-1;
+  -webkit-animation-delay: 0.7s;
+  animation-delay: 0.7s;
+}
+.skills-bar-container li:nth-of-type(2) .bar-container .progressbar {
+  -webkit-animation-name: progress-2;
+  animation-name: progress-2;
+  -webkit-animation-delay: 1.4s;
+  animation-delay: 1.4s;
+}
+.skills-bar-container li:nth-of-type(3) .bar-container .progressbar {
+  -webkit-animation-name: progress-3;
+  animation-name: progress-3;
+  -webkit-animation-delay: 2.1s;
+  animation-delay: 2.1s;
+}
+.skills-bar-container li:nth-of-type(4) .bar-container .progressbar {
+  -webkit-animation-name: progress-4;
+  animation-name: progress-4;
+  -webkit-animation-delay: 2.8s;
+  animation-delay: 2.8s;
+}
+.skills-bar-container li:nth-of-type(5) .bar-container .progressbar {
+  -webkit-animation-name: progress-5;
+  animation-name: progress-5;
+  -webkit-animation-delay: 3.5s;
+  animation-delay: 3.5s;
+}
+
+.progressred {
+  background-color: #285aff;
+}
+
+.progressblue {
+  background-color: #29a2ff;
+}
+
+.progresspurple {
+  background-color: #4ea1ff;
+}
+
+.progressorange {
+  background-color: #68edff;
+}
+
+.progressgreen {
+  background-color: #92edff;
+}
+
+@-webkit-keyframes progress-1 {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@-webkit-keyframes progress-2 {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@-webkit-keyframes progress-3 {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@-webkit-keyframes progress-4 {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@-webkit-keyframes progress-5 {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@-moz-keyframes progress-1 {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@-moz-keyframes progress-2 {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@-moz-keyframes progress-3 {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@-moz-keyframes progress-4 {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@-moz-keyframes progress-5 {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes progress-1 {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes progress-2 {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes progress-3 {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes progress-4 {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes progress-5 {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
