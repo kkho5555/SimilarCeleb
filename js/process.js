@@ -36,7 +36,7 @@ async function predict() {
     const img = tf.browser.fromPixels(imgElement).toFloat();
 
     const offset = tf.scalar(255);
-    // Normalize the image from [0, 255] to [-1, 1].
+    // Normalize the image from [0, 255] to [0, 1].
     const normalized = img.div(offset);
     // Reshape to a single-element batch so we can pass it to predict.
     const batched = normalized.reshape([1, IMAGE_SIZE, IMAGE_SIZE, 3]);
@@ -163,7 +163,7 @@ function readURL(input) {
       utils.loadOpenCv(() => {
         let faceCascadeFile = 'haarcascade_frontalface_alt.xml';
         utils.createFileFromUrl(faceCascadeFile, faceCascadeFile, () => {
-          // tryIt.removeAttribute('disabled');
+          loader__message.innerHTML = '얼굴 인식중.....';
           faceDetect();
         });
       });
@@ -175,7 +175,6 @@ function readURL(input) {
   }
 }
 function faceDetect() {
-  loader__message.innerHTML = '얼굴 인식중.....';
   let src = cv.imread('canvasInput');
   let gray = new cv.Mat();
   let resultImg = new cv.Mat();
