@@ -303,25 +303,33 @@ a:visited {
   -webkit-animation-delay: 3.5s;
   animation-delay: 3.5s;
 }
-
-.progressred {
-  background-color: #285aff;
+.start__btn {
+  font-size: 4vmin;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  background-color: #b1bebb;
+  width: 30%;
+  margin: 0 35%;
+  height: 50px;
+  cursor: pointer;
+  display: none;
+  z-index: 999;
 }
-
-.progressblue {
-  background-color: #29a2ff;
+.progressbar-0::-webkit-progress-value {
+  background: rgb(0, 153, 255);
 }
-
-.progresspurple {
-  background-color: #4ea1ff;
+.progressbar-1::-webkit-progress-value {
+  background: rgb(47, 172, 255);
 }
-
-.progressorange {
-  background-color: #68edff;
+.progressbar-2::-webkit-progress-value {
+  background: rgb(100, 193, 255);
 }
-
-.progressgreen {
-  background-color: #92edff;
+.progressbar-3::-webkit-progress-value {
+  background: rgb(135, 207, 255);
+}
+.progressbar-4::-webkit-progress-value {
+  background: rgb(167, 220, 255);
 }
 
 @-webkit-keyframes progress-1 {

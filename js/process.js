@@ -1,11 +1,35 @@
 const IMAGE_CLASSES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+const IMAGE_DATA = {
+  '0': '가인',
+  '1': '공찬',
+  '2': '차은우',
+  '3': '닉쿤',
+  '4': '전지현',
+  '5': '설현',
+  '6': '아이유',
+  '7': '옹성우',
+  '8': '유승호',
+  '9': '한예슬',
+  '10': '규현',
+  '11': '박서준',
+  '12': '강다니엘',
+  '13': '탑',
+  '14': '태연',
+  '15': '하니',
+  '16': '김구라',
+  '17': '백현',
+  '18': '보아',
+  '19': '뷔',
+};
+
 const IMAGE_SIZE = 64;
-TOPK_PREDICTIONS = 12;
+TOPK_PREDICTIONS = 20;
 const predictionsElement = document.getElementById('predictions');
 let loader__message = document.querySelector('#loader__message');
 async function predict() {
   loader__message.innerHTML = '데이터베이스에서 닮은 얼굴을 찾습니다';
   const model = await tf.loadLayersModel('js/model/model.json');
+
   const imgElement = document.querySelector('#canvasOutput');
   const logits = tf.tidy(() => {
     // tf.browser.fromPixels() returns a Tensor from an image element.
@@ -16,16 +40,23 @@ async function predict() {
     const normalized = img.div(offset);
     // Reshape to a single-element batch so we can pass it to predict.
     const batched = normalized.reshape([1, IMAGE_SIZE, IMAGE_SIZE, 3]);
+    const pred = model.predict(batched);
 
-    startTime2 = performance.now();
-    return model.predict(batched);
+    return pred;
   });
-
+  console.log('logits', await logits.data());
   const classes = await getTopKClasses(logits, TOPK_PREDICTIONS);
 
   // Show the classes in the DOM.
   showResults(classes);
+  showReturn();
 }
+function showReturn() {
+  const start__btn = document.querySelector('.start__btn');
+  start__btn.style.display = 'block';
+  start__btn.animate([{ opacity: 0 }, { opacity: 1 }], 5000);
+}
+
 async function getTopKClasses(logits, topK) {
   const values = await logits.data();
 
@@ -46,7 +77,7 @@ async function getTopKClasses(logits, topK) {
   const topClassesAndProbs = [];
   for (let i = 0; i < topkIndices.length; i++) {
     topClassesAndProbs.push({
-      className: IMAGE_CLASSES[topkIndices[i]],
+      className: IMAGE_DATA[topkIndices[i]],
       probability: topkValues[i],
     });
   }
@@ -56,13 +87,6 @@ async function getTopKClasses(logits, topK) {
 function showResults(classes) {
   console.log(classes);
   let probs = {};
-  const colors = [
-    'progressred',
-    'progressblue',
-    'progresspurple',
-    'progressorange',
-    'progressgreen',
-  ];
 
   const predictionContainer = document.createElement('ul');
   predictionContainer.className = 'skills-bar-container';
@@ -78,7 +102,7 @@ function showResults(classes) {
     classElement.className = 'progressbar-title';
 
     const classTitle = document.createElement('h3');
-    classTitle.innerText = '이름' + celeb;
+    classTitle.innerText = celeb;
 
     classElement.appendChild(classTitle);
 
@@ -92,10 +116,9 @@ function showResults(classes) {
     barContainer.className = 'bar-container';
     const progressbar = document.createElement('progress');
     progressbar.id = 'progress-' + celeb;
-    progressbar.className = 'progressbar ' + colors[i];
+    progressbar.className = 'progressbar ' + 'progressbar-' + i;
     progressbar.value = 0;
     progressbar.max = '100';
-    console.log(prob);
 
     barContainer.appendChild(progressbar);
     row.appendChild(barContainer);
