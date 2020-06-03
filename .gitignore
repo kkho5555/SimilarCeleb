@@ -1,1 +1,5 @@
-/backend/*
+/backend/numpy_data
+/backend/raw
+/backend/data
+/backend/.vscode
+
