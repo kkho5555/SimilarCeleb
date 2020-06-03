@@ -1,6 +1,1 @@
-/backend/model
-/backend/numpy_data
-/backend/tfjs_artifacts
-/backend/train
-/backend/validation
-/backend/celeb
+/backend/*
