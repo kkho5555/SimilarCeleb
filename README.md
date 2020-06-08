@@ -16,7 +16,7 @@
    2) After the keras model declaration, model learning is carried out by changing the values of each parameter.
    3) After learning is finished, the saved model file is converted using the "tfjs" package.
 
-4.시각화(process.js)
+4. 시각화(process.js)
    1) When the user inputs an image, face detection and gray scaling are performed using OpenCvJS.
    2) Match the input shape of the trained model with the input shape of the image entered by the user.
    3) Predict the preprocessed image.
